@@ -61,6 +61,7 @@ public class QuartzConfiguration {
     public SchedulerFactoryBean schedulerFactoryBean(JobFactory factory, DataSource dataSource) throws IOException {
         SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
 
+        schedulerFactory.setOverwriteExistingJobs(true);
         schedulerFactory.setJobFactory(factory);
         schedulerFactory.setDataSource(dataSource);
         schedulerFactory.setQuartzProperties(quartzProperties());
