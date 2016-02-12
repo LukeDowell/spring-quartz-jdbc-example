@@ -183,10 +183,4 @@ create index idx_qrtz_ft_jg on qrtz_fired_triggers(SCHED_NAME,JOB_GROUP);
 create index idx_qrtz_ft_t_g on qrtz_fired_triggers(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP);
 create index idx_qrtz_ft_tg on qrtz_fired_triggers(SCHED_NAME,TRIGGER_GROUP);
 
-INSERT INTO QRTZ_LOCKS values('TRIGGER_ACCESS');
-INSERT INTO QRTZ_LOCKS values('JOB_ACCESS');
-INSERT INTO QRTZ_LOCKS values('CALENDAR_ACCESS');
-INSERT INTO QRTZ_LOCKS values('STATE_ACCESS');
-INSERT INTO QRTZ_LOCKS values('MISFIRE_ACCESS');
-
 commit;

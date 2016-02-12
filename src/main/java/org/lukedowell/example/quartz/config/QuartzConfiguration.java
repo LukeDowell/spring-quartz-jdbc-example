@@ -1,5 +1,6 @@
 package org.lukedowell.example.quartz.config;
 
+import org.lukedowell.example.quartz.jobs.ExampleJob;
 import org.quartz.Scheduler;
 import org.quartz.spi.JobFactory;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 import javax.sql.DataSource;
@@ -36,6 +38,14 @@ public class QuartzConfiguration {
         AutowiringSpringBeanJobFactory jobFactory = new AutowiringSpringBeanJobFactory();
         jobFactory.setApplicationContext(applicationContext);
         return jobFactory;
+    }
+
+    @Bean
+    public JobDetailFactoryBean createJobDetail() {
+        JobDetailFactoryBean factoryBean = new JobDetailFactoryBean();
+        factoryBean.setJobClass(ExampleJob.class);
+        factoryBean.setDurability(true);
+        return factoryBean;
     }
 
     /**
